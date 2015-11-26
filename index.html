@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MapIt</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="sheet.css">
+    <!-- Meta Data -->
+    <meta charset="utf-8">
+    <meta name="description" content="Calculate nth term of Arithmetic Progression">
+    <meta name="keywords" content="">
+    <meta name="author" content="Shivam Mamgain">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="panel">
+      <div class="row">
+        <label for="loc_text">Enter location:</label>
+        <input type="text" id="loc_text">
+      </div>
+      <div class="row center">
+        Or
+      </div>
+      <div class="row">
+        <input type="button" value="Use your location" id="loc_button" class="button">
+      </div>
+      <div class="row" id="step_two"></div>
+      <div class="row">
+        <input type="button" value="Trace Route" id="trace_route" class="button" disabled>
+      </div>
+      <div class="row">
+        <input type="button" value="Get Static Map" id="static_map" class="button" disabled>
+      </div>
+      <div class="row">
+        <input type="text" id="static_url">
+      </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://hpneo.github.io/gmaps/gmaps.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
