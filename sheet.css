@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
-  background: #dcdcdc;
+  background: #263238;
 }
 
 #map {
@@ -14,9 +14,27 @@ body {
   top: 10px;
   right: 10px;
   width: 200px;
-  height: 240px;
+  height: 265px;
   background: #ffffff;
   padding: 10px;
+  border: 1px solid #a0a0a0;
+}
+
+.github {
+  text-align: right;
+  margin-top: 5px;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.gtlink {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.gtlink:hover {
+  color: #dcdcdc;
 }
 
 .row {
