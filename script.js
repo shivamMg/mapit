@@ -1,10 +1,11 @@
 $(document).ready(function(){
   var corvo = false, attano = true;
   var m1 = null, m2 = null;
-  var step_two_text = 'Now add two markers on the Map by clicking at ' + 
-  'the desired points and then click on <strong>Trace Route</strong>';
-  // Icons downloaded from http://www.benjaminkeen.com/google-maps-coloured-markers
+  var m1pos, m2pos;
   var sourceIcon = 's.png', destinationIcon = 'd.png';
+  var strokeColor = '#131540';
+  var strokeOpacity = 0.6;
+  var strokeWeight = 6;
 
   var mapObj = new GMaps({
     el: '#map',
@@ -21,12 +22,14 @@ $(document).ready(function(){
           lng: e.latLng.lng(),
           icon: sourceIcon
         });
+        m1pos = m1.getPosition();
       } else {
         m2 = mapObj.addMarker({
           lat: e.latLng.lat(),
           lng: e.latLng.lng(),
           icon: destinationIcon
         });
+        m2pos = m2.getPosition();
       }
       // If two markers have been placed
       if (m1 !== null && m2 !== null) {
@@ -46,7 +49,6 @@ $(document).ready(function(){
           if (status == 'OK') {
             latlng = results[0].geometry.location;
             mapObj.setCenter(latlng.lat(), latlng.lng());
-            $('#step_two').html(step_two_text);
           } else if (status == 'ZERO_RESULTS') {
             alert('Sorry, no location named ' + address);
           }
@@ -59,7 +61,6 @@ $(document).ready(function(){
     GMaps.geolocate({
       success: function(position) {
         mapObj.setCenter(position.coords.latitude, position.coords.longitude);
-        $('#step_two').html(step_two_text);
       },
       error: function(error) {
         alert('Geolocation failed. Please try again or enter location manually.');
@@ -71,32 +72,56 @@ $(document).ready(function(){
   });
 
   $('#trace_route').click(function(){
-    var m1pos = m1.getPosition();
-    var m2pos = m2.getPosition();
     // Remove previous route
     mapObj.removePolylines();
-    mapObj.drawRoute({
+    mapObj.getRoutes({
       origin: [m1pos.lat(), m1pos.lng()],
       destination: [m2pos.lat(), m2pos.lng()],
-      strokeColor: '#131540',
-      strokeOpacity: 0.6,
-      strokeWeight: 6
+      travelMode: 'walking',
+      callback: function(result) {
+        var path = [];
+        // Convert object path to array of coordinates
+        $.each(result[0].overview_path, function(i, coord) {
+          path.push([coord.lat(), coord.lng()]);
+        });
+        mapObj.drawPolyline({
+          path: path,
+          strokeColor: strokeColor,
+          strokeOpacity: strokeOpacity,
+          strokeWeight: strokeWeight
+        });
+        getStaticMap(path);
+      }
     });
-    $('#static_map').prop('disabled', false);
   });
 
-  $('#static_map').click(function(){
+  function getStaticMap(path) {
     var c = mapObj.getCenter();
-    url = GMaps.staticMapURL({
-      size: [1000, 700],
+    var sm1 = {
+      lat: m1pos.lat(),
+      lng: m1pos.lng(),
+      color: 'red'
+    };
+    var sm2 = {
+      lat: m2pos.lat(),
+      lng: m2pos.lng(),
+      color: 'blue'
+    };
+    var url = GMaps.staticMapURL({
+      size: [700, 700],
       lat: c.lat(),
       lng: c.lng(),
       zoom: mapObj.getZoom(),
-      markers: [
-        m1,
-        m2
-      ]
+      markers: [sm1, sm2],
+      polyline: {
+        path: path,
+        strokeColor: strokeColor,
+        strokeOpacity: strokeOpacity,
+        strokeWeight: strokeWeight
+      }
     });
+    
     $('#static_url').val(url).select();
-  });
+    $('#preview').prop('href', url);
+  }
 });

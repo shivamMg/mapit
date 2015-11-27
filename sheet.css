@@ -39,12 +39,8 @@ body {
   padding-left: 5px;
 }
 
-#step_two {
-  font-size: 13px;
-}
-
 #static_url {
-  width: 190px;
-  height: 18px;
+  width: 140px;
+  height: 13px;
   padding-left: 2px;
 }
