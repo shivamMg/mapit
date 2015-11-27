@@ -91,6 +91,8 @@ $(document).ready(function(){
           strokeWeight: strokeWeight
         });
         getStaticMap(path);
+        // Empty `result` array
+        result.length = 0;
       }
     });
   });
@@ -108,7 +110,7 @@ $(document).ready(function(){
       color: 'blue'
     };
     var url = GMaps.staticMapURL({
-      size: [700, 700],
+      size: [1000, 700],
       lat: c.lat(),
       lng: c.lng(),
       zoom: mapObj.getZoom(),
@@ -121,7 +123,9 @@ $(document).ready(function(){
       }
     });
     
-    $('#static_url').val(url).select();
     $('#preview').prop('href', url);
+    $('#download').prop('href', url);
+    $('.output').fadeIn(1000);
+    $('#static_url').val(url).select();
   }
 });
