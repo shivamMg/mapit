@@ -2,23 +2,24 @@
 <html>
   <head>
     <title>Mapit</title>
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="sheet.css">
     <!-- Meta Data -->
     <meta charset="utf-8">
-    <meta name="description" content="Calculate nth term of Arithmetic Progression">
-    <meta name="keywords" content="">
+    <meta name="description" content="Map a path from source to destination">
+    <meta name="keywords" content="map,maps,mapit,gmaps,route,planning,preview,source,destination">
     <meta name="author" content="Shivam Mamgain">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="sheet.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
   </head>
   <body>
     <div id="map"></div>
     <div class="panel">
-      <div class="row" style="font-size: 18px;">
-        <strong>Mapit</strong>
+      <div class="row" style="font-size: 20px;">
+        Mapit
       </div>
       <div class="row">
-        <label for="loc_text">Enter location:</label>
+        <label for="loc_text"><span style="font-size: 13px;">Enter location:</span></label>
         <input type="text" id="loc_text">
       </div>
       <div class="row center">
@@ -45,7 +46,7 @@
     </div>
 
     <div class="github">
-      at <a href="https://github.com/shivamMg/mapit" target="_blank" class="gtlink"><strong>GitHub</strong></a>
+      View repo at <a href="https://github.com/shivamMg/mapit" target="_blank" class="gtlink"><strong>GitHub</strong></a>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>

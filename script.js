@@ -9,8 +9,9 @@ $(document).ready(function(){
 
   var mapObj = new GMaps({
     el: '#map',
-    lat: 48.857,
-    lng: 2.295,
+    lat: 41.8902421,
+    lng: 12.4924991,
+    zoom: 16,
     click: function(e) {
       if (corvo) {
         mapObj.removeMarker((attano) ? m1 : m2);

@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
-  background: #263238;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #map {
@@ -14,7 +14,7 @@ body {
   top: 10px;
   right: 10px;
   width: 200px;
-  height: 265px;
+  height: 280px;
   background: #ffffff;
   padding: 10px;
   border: 1px solid #a0a0a0;
@@ -24,17 +24,17 @@ body {
   text-align: right;
   margin-top: 5px;
   padding: 10px;
-  color: #ffffff;
-  font-size: 30px;
+  color: #455a64;
+  font-size: 20px;
 }
 
 .gtlink {
   text-decoration: none;
-  color: #ffffff;
+  color: #37474f;
 }
 
 .gtlink:hover {
-  color: #dcdcdc;
+  color: #263238;
 }
 
 .row {
@@ -48,7 +48,20 @@ body {
 
 .button {
   width: 199px;
-  height: 30px;
+  height: 25px;
+  background-color: #ffffff;
+  color: #78909c;
+  border: 1px solid #78909c;
+}
+
+.button:hover:enabled {
+  background-color: #78909c;
+  color: #ffffff;
+}
+
+.button:disabled {
+  color: #cfd8dc;
+  border: 1px solid #cfd8dc;
 }
 
 #loc_text {
