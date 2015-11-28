@@ -50,6 +50,7 @@ $(document).ready(function(){
           if (status == 'OK') {
             latlng = results[0].geometry.location;
             mapObj.setCenter(latlng.lat(), latlng.lng());
+            mapObj.setZoom(16);
           } else if (status == 'ZERO_RESULTS') {
             alert('Sorry, no location named ' + address);
           }
@@ -62,6 +63,7 @@ $(document).ready(function(){
     GMaps.geolocate({
       success: function(position) {
         mapObj.setCenter(position.coords.latitude, position.coords.longitude);
+        mapObj.setZoom(16);
       },
       error: function(error) {
         alert('Geolocation failed. Please try again or enter location manually.');
